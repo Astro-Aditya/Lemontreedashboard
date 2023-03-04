@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { GET_CITIES, GET_HOTELS, GET_DATA } from './constants'
 
+let URL = 'https://auqualllemontreehotels.onrender.com/hotel'
+// let URL = 'http://localhost:5000/hotel'
 
 export const getCities = () => async (dispatch) => {
     const config = {
@@ -11,7 +13,7 @@ export const getCities = () => async (dispatch) => {
     }
 
     try{
-        const res = await axios.get('http://localhost:5000/hotel',config)
+        const res = await axios.get(`${URL}`,config)
         // const res = await axios.get(`/farmer`,body, config)
         
         dispatch({
@@ -39,7 +41,7 @@ export const getHotels = (objbody) => async (dispatch) => {
     const body = JSON.stringify(objbody)
 
     try{
-        const res = await axios.post('http://localhost:5000/hotel/hotels',body, config)
+        const res = await axios.post(`${URL}/hotels`,body, config)
         // const res = await axios.post(`/hotel/hotels`,body, config)
         
         dispatch({
@@ -67,7 +69,7 @@ export const getFullData = (objbody) => async (dispatch) => {
     const body = JSON.stringify(objbody)
 
     try{
-        const res = await axios.post('http://localhost:5000/hotel/data',body, config)
+        const res = await axios.post(`${URL}/data`,body, config)
         // const res = await axios.post(`/hotel/hotels`,body, config)
         
         dispatch({
