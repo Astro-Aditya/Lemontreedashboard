@@ -1,0 +1,37 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgb(215,181,109, 1);
+    color: black;
+    font-family: Helvetica;
+    font-weight: 300;
+}
+
+.navbar__title {
+    margin-right: auto;
+    font-size: 150%;
+    padding: 12px 16px;
+}
+
+.lemontreelogo{
+    margin-left: 200px;
+}
+
+.auqualllogo{
+    padding:5px;
+}
+
+.navbar__item {
+    padding: 16px 16px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.logout{
+    padding: 5px;
+}
+
+.logout:hover{
+    cursor: pointer;
+}

@@ -1,0 +1,62 @@
+.dashboardContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 20px rgb(0 0 0 / 15%);
+}
+
+.filterContainer{
+    display: flex;
+}
+
+.dropdownContainer{
+    padding: 10px;
+}
+
+.dropdownContainer > select{
+    margin-left: 10px;
+}
+
+.welcome{
+    height: 100%;
+}
+
+.bannerContainer{
+    width: 100%
+}
+
+.banner{
+    position: relative;
+    background: rgb(240, 228, 201);
+    height: 47px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 5;
+}
+
+.banner > div{
+    padding: 10px;
+}
+
+.open{
+    margin-top: 0px !important;
+    height: 100% !important;
+    opacity: 1 !important;
+    transition: margin-top 0.3s, opacity 0.2s;
+}
+
+.bannerContent{
+    margin-top: -45px;
+    padding: 10px;
+    height: 40px;
+    opacity: 0;
+    transition: margin-top 0.3s, opacity 0.2s;
+}
+
+.symbol{
+    font-size: 30px;
+    cursor: pointer;
+}
