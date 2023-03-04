@@ -4,7 +4,7 @@ const Hotel = require('../models/HotelData');
 const router = express.Router()
 
 
-router.get('/', async(req, res) => {
+router.post('/', async(req, res) => {
     try {
         let cities = await Hotel.find({}).select('City').distinct('City')
         res.json({

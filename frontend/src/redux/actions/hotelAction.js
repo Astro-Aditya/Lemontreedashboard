@@ -13,7 +13,7 @@ export const getCities = () => async (dispatch) => {
     }
 
     try{
-        const res = await axios.get(`${URL}`,config)
+        const res = await axios.post(`${URL}`,{},config)
         // const res = await axios.get(`/farmer`,body, config)
         
         dispatch({
