@@ -50,10 +50,11 @@ const Dashboard = () => {
     useEffect(() => {
         console.log(fullData.fullData)
         if(fullData.fullData){
+            let arr = []
             setProximity(fullData.fullData[0]?.Proximity.split(';'))
             setCarRentals(fullData.fullData[0]?.Car_Rentals.split(';'))
             setDeluxRooms(fullData.fullData[0]?.Deluxe_Room.split('•'))
-            setEci(fullData.fullData[0]?.ECI_LCO.split(';'))
+            // setEci(fullData.fullData[0]?.ECI_LCO.split(';'))
             setExecutiveRoom(fullData.fullData[0]?.Executive_Room.split('•'))
             setExecutiveSuite(fullData.fullData[0]?.Executive_Suite.split('•'))
             setExtraMeal(fullData.fullData[0]?.Extra_Meal_Bed_Charges.split(';'))
@@ -62,6 +63,13 @@ const Dashboard = () => {
             setSPAR(fullData.fullData[0]?.Specially_Abled_Room.split(';'))
             setStandardRoom(fullData.fullData[0]?.Standard_Room.split('•'))
             setSuite(fullData.fullData[0]?.Suite.split('•'))
+
+            let ec = fullData.fullData[0]?.ECI_LCO.split(';')
+
+            for(let i=0; i<ec.length; i++){
+                arr = [...arr, ...ec[i].split('+')]
+            }
+            setEci(arr)
         }
     },[fullData])
 
@@ -153,6 +161,31 @@ const Dashboard = () => {
                             ))}
                         </div>
                     </div>
+
+                    <div className='bannerContainer'>
+                        <div className='banner'>
+                            <div>Early CheckIn / Late CheckOut</div>
+                            {show.eci ? 
+                                <div className='symbol' name='eci' onClick={(e) => handleShowHide(e)}>-</div>
+                                :
+                                <div className='symbol' name='eci' onClick={(e) => handleShowHide(e)}>+</div>
+                            }
+                        </div>
+                        <div className={show.eci ? 'bannerContent open' :'bannerContent'}>
+                            {fullData.fullData[0].ECI_LCO === 'NA' ?
+                                (<p>Not Available</p>)
+                                :
+                                (   <>                                    
+                                        {
+                                        eci.map(val => {
+                                            return(<p>{val}</p>)
+                                        })}
+                                    </>
+                                    
+                                )
+                            }
+                        </div>
+                    </div>
                     
                     <div className='bannerContainer'>
                         <div className='banner'>
@@ -186,6 +219,30 @@ const Dashboard = () => {
                     
                     <div className='bannerContainer'>
                         <div className='banner'>
+                            <div>Extra Meal Bed Charges</div>
+                            {show.embc ? 
+                                <div className='symbol' name='embc' onClick={(e) => handleShowHide(e)}>-</div>
+                                :
+                                <div className='symbol' name='embc' onClick={(e) => handleShowHide(e)}>+</div>
+                            }
+                        </div>
+                        <div className={show.embc ? 'bannerContent open' :'bannerContent'}>
+                            {fullData.fullData[0].Extra_Meal_Bed_Charges === 'NA' ?
+                                (<p>Not Available</p>)
+                                :
+                                (
+                                    <div>
+                                        {extraMeal.map(val => (
+                                            <p>{val}</p>
+                                        ))}
+                                    </div>
+                                )
+                            }
+                        </div>
+                    </div>
+
+                    <div className='bannerContainer'>
+                        <div className='banner'>
                             <div>Delux Room</div>
                             {show.dr ? 
                                 <div className='symbol' name='dr' onClick={(e) => handleShowHide(e)}>-</div>
@@ -203,36 +260,6 @@ const Dashboard = () => {
                                             <p>{val}</p>
                                         ))}
                                     </div>
-                                )
-                            }
-                        </div>
-                    </div>
-                    
-                    <div className='bannerContainer'>
-                        <div className='banner'>
-                            <div>Early CheckIn / Late CheckOut</div>
-                            {show.eci ? 
-                                <div className='symbol' name='eci' onClick={(e) => handleShowHide(e)}>-</div>
-                                :
-                                <div className='symbol' name='eci' onClick={(e) => handleShowHide(e)}>+</div>
-                            }
-                        </div>
-                        <div className={show.eci ? 'bannerContent open' :'bannerContent'}>
-                            {fullData.fullData[0].ECI_LCO === 'NA' ?
-                                (<p>Not Available</p>)
-                                :
-                                (   <>                                    
-                                        {
-                                        eci.map(val => {
-                                            return(<p>{val}</p>)
-                                            val2 = [...val2, ...val.split('+')] 
-                                            // console.log(val2[2])
-                                            val2.map(someVal => (
-                                                <p>{someVal}</p>
-                                            ))
-                                        })}
-                                    </>
-                                    
                                 )
                             }
                         </div>
@@ -278,30 +305,6 @@ const Dashboard = () => {
                                 (
                                     <div>
                                         {executiveSuite.map(val => (
-                                            <p>{val}</p>
-                                        ))}
-                                    </div>
-                                )
-                            }
-                        </div>
-                    </div>
-                    
-                    <div className='bannerContainer'>
-                        <div className='banner'>
-                            <div>Extra Meal Bed Charges</div>
-                            {show.embc ? 
-                                <div className='symbol' name='embc' onClick={(e) => handleShowHide(e)}>-</div>
-                                :
-                                <div className='symbol' name='embc' onClick={(e) => handleShowHide(e)}>+</div>
-                            }
-                        </div>
-                        <div className={show.embc ? 'bannerContent open' :'bannerContent'}>
-                            {fullData.fullData[0].Extra_Meal_Bed_Charges === 'NA' ?
-                                (<p>Not Available</p>)
-                                :
-                                (
-                                    <div>
-                                        {extraMeal.map(val => (
                                             <p>{val}</p>
                                         ))}
                                     </div>
