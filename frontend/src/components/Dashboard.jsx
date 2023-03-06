@@ -67,7 +67,7 @@ const Dashboard = () => {
             let ec = fullData.fullData[0]?.ECI_LCO.split(';')
 
             for(let i=0; i<ec.length; i++){
-                arr = [...arr, ...ec[i].split('+')]
+                arr = [...arr, ...ec[i].split('&')]
             }
             setEci(arr)
         }
