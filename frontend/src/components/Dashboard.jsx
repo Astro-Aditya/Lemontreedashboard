@@ -48,7 +48,7 @@ const Dashboard = () => {
     }, [])
 
     useEffect(() => {
-        console.log(fullData.fullData)
+        // console.log(fullData.fullData)
         if(fullData.fullData){
             let arr = []
             setProximity(fullData.fullData[0]?.Proximity.split(';'))
