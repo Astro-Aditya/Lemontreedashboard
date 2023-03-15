@@ -66,7 +66,7 @@ app.use(function(req, res, next){
 // IntervalWiseCallDetail.insertMany(iwcd)
 // IntervalWiseLoginDetail.insertMany(LoginData)
 // APREzmall.insertMany(newAPR)
-HotelData.insertMany(insertionData)
+// HotelData.insertMany(insertionData)
 
 app.use('/register', register)
 app.use('/login', login)
